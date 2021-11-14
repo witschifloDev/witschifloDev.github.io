@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Development website of Florian Witschi">
+        <meta name="keywords" content="Personal, Development">
+        <meta name="author" content="Florian Witschi">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dev Florian</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Bierrechner</h1>
+        <p>Wie viele Biere habe ich bereits getrunken:</p>
+        <input type="text" id="numberOfBeers" name="name" required minlength="4" maxlength="8" size="10">
+        <button id="beerButton">Calculate</button>
+        <p id="response"></p>
+    </body>
+    <script>
+        document.getElementById("beerButton").addEventListener('click', function(){
+            let response = document.getElementById("response")
+            console.log(response.firstChild)
+            if(response.firstChild){
+                response.removeChild(response.firstChild)
+            }
+            //respone.removeChild(respone.lastChild)
+            let beers = document.getElementById("numberOfBeers").value
+            let output = document.createElement("p")
+            if (beers === ""){
+                output.innerHTML = "Anzahl Biere eingeben"
+            }else if(beers < 0){
+                output.innerHTML = "Du kannst keine negative Biere trinken"
+            } else if (beers <= 1){
+                output.innerHTML = "Geht auch ohne Bier"
+                output.style.backgroundColor = "green"
+            }else if (beers <= 1){
+                output.innerHTML = "Du darfst noch Auto fahren"
+                output.style.backgroundColor = "green"
+            } else{
+                output.innerHTML = "Du fährst kein Auto mehr!"
+                output.style.backgroundColor = "red"
+            }
+            console.log(beers)
+            response.appendChild(output)
+        })
+    </script>
+</html>
